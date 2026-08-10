@@ -1,0 +1,37 @@
+{
+    "name": "Kartik Tomar",
+    "email": "Kartiktomar3405@gmail.com",
+    "phone": "+91-8766295168",
+    "total_experience": null,
+    "education": [
+        "Bachelor of Technology in Computer Engineering at Dr. A.P.J. Abdul Kalam Technical University, Lucknow (2023 - Present)",
+        "Senior Secondary (Class XII) - CBSE at East Delhi Public School, Ghaziabad (2022 - 2023)",
+        "Secondary (Class X) - CBSE at East Delhi Public School, Ghaziabad (2020 - 2021)"
+    ],
+    "skills": [
+        "C",
+        "C++",
+        "Python",
+        "JavaScript",
+        "HTML5",
+        "CSS3",
+        "Tailwind CSS",
+        "React.js",
+        "Node.js",
+        "Express.js",
+        "MongoDB",
+        "Git/GitHub"
+    ],
+    "experiences": [],
+    "projects": [
+        "E-Consultation Sentiment Analysis Dashboard",
+        "Deep Packet Inspection & Filtering Engine"
+    ],
+    "certifications": [],
+    "achievements": [
+        "Selected as a Finalist in Policy Conclave'26 at the Indian Institute of Technology, Kanpur",
+        "Ranked Top 10 in Hacker's Premier League at Guru Gobind Singh Indraprastha University (Delhi)",
+        "Ranked Top 20 in the National AI/ML Hackathon by AVEVA",
+        "Solved over 100+ coding problems across platforms including LeetCode"
+    ]
+}
