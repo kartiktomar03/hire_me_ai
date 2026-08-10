@@ -47,7 +47,7 @@ function App() {
     setIsChatLoading(true);
 
     try {
-      const response = await fetch('http://127.0.0.1:8000/chat', {
+      const response = await fetch('https://hiremeai-backend-hd69.onrender.com/chat', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ question: userMsg.content })
@@ -92,7 +92,7 @@ function App() {
     setJdResult(null);
 
     try {
-      const response = await fetch('http://127.0.0.1:8000/evaluate-jd', {
+      const response = await fetch('https://hiremeai-backend-hd69.onrender.com/evaluate-jd', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ job_description: jdInput })
@@ -124,7 +124,6 @@ function App() {
         >
           Contact
         </a>
-
 
         {/* RESUME LINK */}
         <a 
