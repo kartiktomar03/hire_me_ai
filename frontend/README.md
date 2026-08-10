@@ -1,16 +1,29 @@
-# React + Vite
+# 🚀 HireMe.AI - Interactive AI Portfolio
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+Welcome to **HireMe.AI**, a full-stack AI-powered personal portfolio! This project is not just a standard resume website; it features a custom AI agent built to interact with visitors, answer questions about my skills, experience, and projects, and act as a virtual representative.
 
-Currently, two official plugins are available:
+Built by **Kartik Tomar**, an aspiring B.Tech CSE student and developer passionate about combining web development with artificial intelligence.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## ✨ Features
 
-## React Compiler
+- **🤖 AI Agent Integration:** A customized backend AI that parses my resume data (`parsed_resume.json`) to answer recruiter queries in real-time.
+- **⚡ Fast & Modern Frontend:** Built with React and Vite for a seamless and responsive user interface.
+- **⚙️ Robust Backend:** Powered by Python and FastAPI to handle AI requests efficiently.
+- **📄 Dynamic Resume Parsing:** Automatically processes and updates the AI's knowledge base whenever a new PDF resume is uploaded.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## 🛠️ Tech Stack
 
-## Expanding the Oxlint configuration
+- **Frontend:** React, Vite, Tailwind CSS (or your preferred styling)
+- **Backend:** Python, FastAPI, Uvicorn
+- **Deployment:** Vercel (Frontend), Render (Backend) _[Coming Soon]_
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and Oxlint's TypeScript related rules in your project.
+## 💻 Local Setup Instructions
+
+Want to run this project locally? Follow these steps:
+
+### 1. Clone the repository
+
+```bash
+git clone https://github.com/kartiktomar03/hire_me_ai.git
+cd hire_me_ai
+```
