@@ -13,7 +13,7 @@ Built by **Kartik Tomar**, an aspiring B.Tech CSE student and developer passiona
 
 ## 🛠️ Tech Stack
 
-- **Frontend:** React, Vite, Tailwind CSS (or your preferred styling)
+- **Frontend:** React, Vite, Tailwind CSS
 - **Backend:** Python, FastAPI, Uvicorn
 - **Deployment:** Vercel (Frontend), Render (Backend) _[Coming Soon]_
 
@@ -24,6 +24,36 @@ Want to run this project locally? Follow these steps:
 ### 1. Clone the repository
 
 ```bash
-git clone https://github.com/kartiktomar03/hire_me_ai.git
+git clone [https://github.com/kartiktomar03/hire_me_ai.git](https://github.com/kartiktomar03/hire_me_ai.git)
 cd hire_me_ai
+2. Backend Setup
+Navigate to the main directory and activate the virtual environment:
+
+Bash
+.\.venv\Scripts\activate
+Start the FastAPI server:
+
+Bash
+uvicorn backend.main:app --reload
+(The backend will run at http://localhost:8000)
+
+3. Frontend Setup
+Open a new terminal, navigate to the frontend folder, and install dependencies:
+
+Bash
+cd frontend
+npm install
+Start the Vite development server:
+
+Bash
+npm run dev
+(The frontend will be accessible at http://localhost:5173)
+
+📬 Contact
+Feel free to reach out if you have any questions or just want to connect!
+
+Email: kartiktomar3405@gmail.com
+
+GitHub: kartiktomar03
 ```
+
