@@ -17,7 +17,7 @@ if not my_api_key:
     raise ValueError("API KEY ERROR")
 
 client = Groq(api_key=my_api_key)
-model = "llama-3.3-70b-versatile"
+model = "openai/gpt-oss-120b"
 
 PDF_PATH = Path("kartik_tomar_resume.pdf")
 JSON_SAVE_PATH = Path("parsed_resume.json")
