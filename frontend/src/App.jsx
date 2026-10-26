@@ -7,18 +7,25 @@ function App() {
   // --- PROJECT POPUP STATE ---
   const [selectedProject, setSelectedProject] = useState(null);
 
+  // Three project folders shown on the desktop.
   const projectsData = {
+    "ResearchLab": {
+      title: "ResearchLab — AI Research Paper Assistant",
+      description: "An AI-powered research assistant for PDF analysis, table and figure extraction, evidence-grounded Q&A, streaming summaries, and comparison across 2–5 research papers.",
+      tech: ["Python", "Flask", "RAG", "Qdrant", "Groq API", "PyMuPDF"],
+      github: "https://github.com/kartiktomar03/Research-Paper-Assistant"
+    },
     "DPI Engine": {
-      title: "Deep Packet Inspection Engine",
-      description: "A high-performance packet inspection and network analysis engine built for monitoring and parsing network traffic securely and efficiently.",
-      tech: ["C++17", "Networking", "Sockets","Multithreading"],
+      title: "Deep Packet Inspection & Filtering Engine",
+      description: "A C++17 network traffic analysis and filtering engine with Ethernet/IPv4/TCP/UDP parsing, multithreaded processing, stateful flow tracking, and TLS SNI inspection.",
+      tech: ["C++17", "TCP/IP", "PCAP", "Multithreading", "POSIX Threads"],
       github: "https://github.com/kartiktomar03/deep_packet_inspection"
     },
-    "Sentimental Analyzer": {
-      title: "Sentimental Analyzer",
-      description: "An AI-powered application utilizing Python and Streamlit to evaluate and analyze public reactions and sentiments toward government policies.",
-      tech: ["Python", "Streamlit", "NLP", "Machine Learning"],
-      github: "https://github.com/your-username/sentimental-analyzer"
+    "HireMe AI": {
+      title: "HireMe AI — Interactive AI-Powered Portfolio",
+      description: "A macOS-inspired portfolio featuring a streaming conversational AI HR agent, job-description matching, and resume-powered context via a React and FastAPI stack.",
+      tech: ["React", "FastAPI", "Groq API", "Python", "PyPDF", "Tailwind CSS"],
+      github: "https://github.com/kartiktomar03/hire_me_ai"
     }
   };
 
@@ -111,11 +118,14 @@ function App() {
     <div className="h-screen w-screen bg-cover bg-center flex flex-col justify-between overflow-hidden relative font-sans" 
          style={{ backgroundImage: "url('https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=2564&auto=format&fit=crop')" }}>
       
+      {/* Subtle glass highlights without changing desktop layout */}
+      <div className="pointer-events-none absolute inset-0 bg-gradient-to-br from-sky-400/15 via-transparent to-indigo-950/20" />
+
       {/* Top Menu Bar */}
-      <div className="w-full h-8 backdrop-blur-md bg-white/20 text-white flex items-center px-4 text-sm font-semibold shadow-sm z-50">
+      <div className="w-full h-8 backdrop-blur-2xl bg-white/15 border-b border-white/30 text-white flex items-center px-4 text-sm font-semibold shadow-[0_4px_24px_rgba(15,23,42,0.10)] z-50">
         <span className="mr-6 cursor-pointer hover:text-gray-200"></span>
         <span className="mr-4 cursor-pointer hover:text-gray-200 font-bold">Kartik's Portfolio</span>
-        <span className="mr-4 cursor-pointer hover:text-gray-200" onClick={() => setSelectedProject(projectsData["DPI Engine"])}>Projects</span>
+        <span className="mr-4 cursor-pointer hover:text-gray-200" onClick={() => setSelectedProject(projectsData["ResearchLab"])}>Projects</span>
         
         {/* CONTACT LINK (Opens Mail Client) */}
         <a 
@@ -136,38 +146,35 @@ function App() {
         </a>
       </div>
 
-      {/* Desktop Folders */}
-      <div className="absolute top-16 left-6 flex flex-col gap-6 z-10">
-        
-        {/* Project 1: DPI Engine */}
-        <div 
-          className="flex flex-col items-center cursor-pointer group w-24"
-          onClick={() => setSelectedProject(projectsData["DPI Engine"])}
-        >
-          <div className="text-5xl drop-shadow-md group-hover:scale-110 transition-transform">📁</div>
-          <span className="text-white text-xs mt-1 font-medium bg-black/30 px-2 py-1 rounded shadow-sm text-center leading-tight">DPI Engine</span>
-        </div>
-
-        {/* Project 2: Sentimental Analyzer */}
-        <div 
-          className="flex flex-col items-center cursor-pointer group w-24"
-          onClick={() => setSelectedProject(projectsData["Sentimental Analyzer"])}
-        >
-          <div className="text-5xl drop-shadow-md group-hover:scale-110 transition-transform">📁</div>
-          <span className="text-white text-xs mt-1 font-medium bg-black/30 px-2 py-1 rounded shadow-sm text-center leading-tight">Sentimental Analyzer</span>
-        </div>
+      {/* Desktop Folders: same macOS desktop layout, three current projects */}
+      <div className="absolute top-16 left-6 flex flex-col gap-5 z-10">
+        {Object.entries(projectsData).map(([name, project]) => (
+          <button
+            key={name}
+            type="button"
+            className="flex flex-col items-center cursor-pointer group w-28 rounded-2xl p-2 bg-white/10 backdrop-blur-lg border border-white/20 shadow-[0_8px_30px_rgba(16,24,50,0.12)] hover:bg-white/20 hover:border-white/40 hover:-translate-y-1 transition-all duration-300"
+            onClick={() => setSelectedProject(project)}
+            aria-label={`Open ${name} project`}
+          >
+            <span className="text-5xl drop-shadow-lg group-hover:scale-110 transition-transform duration-300">📁</span>
+            <span className="text-white text-xs mt-1 font-semibold bg-slate-900/40 backdrop-blur-xl border border-white/20 px-2 py-1 rounded-lg shadow-sm text-center leading-tight">
+              {name}
+            </span>
+          </button>
+        ))}
 
         {/* Resume PDF */}
-        <a 
-          href="/kartik_tomar_resume.pdf" 
-          target="_blank" 
+        <a
+          href="/kartik_tomar_resume.pdf"
+          target="_blank"
           rel="noopener noreferrer"
-          className="flex flex-col items-center cursor-pointer group w-24 mt-4"
+          className="flex flex-col items-center cursor-pointer group w-28 rounded-2xl p-2 bg-white/10 backdrop-blur-lg border border-white/20 shadow-[0_8px_30px_rgba(16,24,50,0.12)] hover:bg-white/20 hover:-translate-y-1 transition-all duration-300"
         >
-          <div className="text-5xl drop-shadow-md group-hover:scale-110 transition-transform">📄</div>
-          <span className="text-white text-xs mt-1 font-medium bg-black/30 px-2 py-1 rounded shadow-sm text-center leading-tight">Resume.pdf</span>
+          <span className="text-5xl drop-shadow-lg group-hover:scale-110 transition-transform duration-300">📄</span>
+          <span className="text-white text-xs mt-1 font-semibold bg-slate-900/40 backdrop-blur-xl border border-white/20 px-2 py-1 rounded-lg shadow-sm text-center leading-tight">
+            Resume.pdf
+          </span>
         </a>
-
       </div>
 
       {/* Main Desktop Area */}
@@ -180,8 +187,8 @@ function App() {
 
       {/* PROJECT DETAILS POPUP MODAL */}
       {selectedProject && (
-        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[500px] bg-white/95 backdrop-blur-2xl rounded-xl shadow-2xl border border-white/40 flex flex-col z-50 overflow-hidden animate-in fade-in zoom-in duration-200">
-          <div className="h-10 bg-gray-100/90 border-b border-gray-200 flex items-center px-4 relative shrink-0">
+        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[500px] max-w-[calc(100vw-24px)] bg-white/70 backdrop-blur-3xl rounded-2xl shadow-[0_24px_75px_rgba(15,23,42,0.35)] border border-white/70 flex flex-col z-50 overflow-hidden animate-in fade-in zoom-in duration-200">
+          <div className="h-10 bg-white/35 backdrop-blur-xl border-b border-white/60 flex items-center px-4 relative shrink-0">
             <div className="flex gap-2">
               <div className="w-3 h-3 rounded-full bg-red-500 cursor-pointer hover:bg-red-600 shadow-sm" onClick={() => setSelectedProject(null)}></div>
               <div className="w-3 h-3 rounded-full bg-yellow-400 shadow-sm"></div>
@@ -197,19 +204,19 @@ function App() {
               <p className="text-xs text-gray-500 font-bold uppercase tracking-wider mb-2">Tech Stack</p>
               <div className="flex flex-wrap gap-1.5">
                 {selectedProject.tech.map((t, idx) => (
-                  <span key={idx} className="bg-blue-100 text-blue-700 px-2.5 py-1 rounded-md text-xs font-semibold">{t}</span>
+                  <span key={idx} className="bg-sky-100/70 backdrop-blur-md border border-white/75 text-blue-700 px-2.5 py-1 rounded-md text-xs font-semibold">{t}</span>
                 ))}
               </div>
             </div>
-            <div className="pt-4 border-t border-gray-200 flex justify-end gap-3">
-              <button onClick={() => setSelectedProject(null)} className="px-4 py-2 bg-gray-200 text-gray-700 rounded-lg text-sm font-medium hover:bg-gray-300 transition-colors">
+            <div className="pt-4 border-t border-white/60 flex justify-end gap-3">
+              <button onClick={() => setSelectedProject(null)} className="px-4 py-2 bg-white/55 backdrop-blur-md border border-white/70 text-gray-700 rounded-lg text-sm font-medium hover:bg-gray-300 transition-colors">
                 Close
               </button>
               <a 
                 href={selectedProject.github} 
                 target="_blank" 
                 rel="noopener noreferrer"
-                className="px-4 py-2 bg-gray-900 text-white rounded-lg text-sm font-semibold hover:bg-black transition-colors flex items-center gap-2 shadow-md"
+                className="px-4 py-2 bg-slate-900/85 backdrop-blur-lg text-white rounded-lg text-sm font-semibold hover:bg-black transition-colors flex items-center gap-2 shadow-md"
               >
                 <span>🔗 View on GitHub</span>
               </a>
@@ -220,9 +227,9 @@ function App() {
 
       {/* AI AGENT WINDOW */}
       {isAiOpen && (
-        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[650px] h-[550px] bg-white/95 backdrop-blur-2xl rounded-xl shadow-2xl border border-white/40 flex flex-col z-50 overflow-hidden">
+        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[650px] max-w-[calc(100vw-24px)] h-[550px] max-h-[calc(100vh-70px)] bg-white/70 backdrop-blur-3xl rounded-2xl shadow-[0_24px_75px_rgba(15,23,42,0.35)] border border-white/70 flex flex-col z-50 overflow-hidden">
           
-          <div className="h-10 bg-gray-100/90 border-b border-gray-200 flex items-center px-4 relative shrink-0">
+          <div className="h-10 bg-white/35 backdrop-blur-xl border-b border-white/60 flex items-center px-4 relative shrink-0">
             <div className="flex gap-2">
               <div className="w-3 h-3 rounded-full bg-red-500 cursor-pointer hover:bg-red-600 shadow-sm" onClick={() => setIsAiOpen(false)}></div>
               <div className="w-3 h-3 rounded-full bg-yellow-400 shadow-sm"></div>
@@ -233,7 +240,7 @@ function App() {
             </div>
           </div>
 
-          <div className="flex bg-gray-50 border-b border-gray-200 shrink-0">
+          <div className="flex bg-white/25 backdrop-blur-lg border-b border-white/45 shrink-0">
             <button className={`flex-1 py-3 text-sm font-bold transition-colors ${activeTab === 'chat' ? 'text-blue-600 border-b-2 border-blue-600' : 'text-gray-500 hover:text-gray-700'}`} onClick={() => setActiveTab('chat')}>
               💬 Chat with HR
             </button>
@@ -242,34 +249,34 @@ function App() {
             </button>
           </div>
 
-          <div className="flex-1 overflow-hidden bg-gray-50/50 flex flex-col">
+          <div className="flex-1 overflow-hidden bg-white/10 flex flex-col">
             {activeTab === 'chat' && (
               <div className="flex flex-col h-full">
                 <div className="flex-1 overflow-y-auto p-4 space-y-4">
                   {messages.map((msg, idx) => (
                     <div key={idx} className={`flex ${msg.role === 'user' ? 'justify-end' : 'justify-start'}`}>
-                      <div className={`max-w-[80%] p-3 rounded-2xl text-sm shadow-sm whitespace-pre-wrap ${msg.role === 'user' ? 'bg-blue-500 text-white rounded-br-none' : 'bg-white text-gray-800 border border-gray-200 rounded-bl-none'}`}>
+                      <div className={`max-w-[80%] p-3 rounded-2xl text-sm shadow-sm whitespace-pre-wrap ${msg.role === 'user' ? 'bg-blue-500/80 backdrop-blur-xl border border-white/30 text-white rounded-br-none' : 'bg-white/55 backdrop-blur-xl text-gray-800 border border-white/70 rounded-bl-none'}`}>
                         {msg.content}
                       </div>
                     </div>
                   ))}
                   {isChatLoading && (
                     <div className="flex justify-start">
-                      <div className="bg-white border border-gray-200 text-gray-500 text-sm p-3 rounded-2xl rounded-bl-none shadow-sm flex gap-1">
+                      <div className="bg-white/55 backdrop-blur-xl border border-white/60 text-gray-500 text-sm p-3 rounded-2xl rounded-bl-none shadow-sm flex gap-1">
                         <span className="animate-bounce">●</span><span className="animate-bounce delay-100">●</span><span className="animate-bounce delay-200">●</span>
                       </div>
                     </div>
                   )}
                 </div>
-                <form onSubmit={handleSendMessage} className="p-3 bg-white border-t border-gray-200 flex gap-2 shrink-0 relative z-50">
+                <form onSubmit={handleSendMessage} className="p-3 bg-white/30 backdrop-blur-xl border-t border-white/50 flex gap-2 shrink-0 relative z-50">
                   <input 
                     type="text" 
                     value={chatInput} 
                     onChange={(e) => setChatInput(e.target.value)} 
                     placeholder="Ask about Kartik..." 
-                    className="flex-1 bg-gray-100 rounded-lg px-4 py-2 text-sm outline-none focus:ring-2 focus:ring-blue-500 transition-all"
+                    className="flex-1 bg-white/55 backdrop-blur-lg border border-white/65 rounded-lg px-4 py-2 text-sm outline-none focus:ring-2 focus:ring-blue-500 transition-all"
                   />
-                  <button type="submit" disabled={isChatLoading} className="bg-blue-500 text-white px-4 py-2 rounded-lg text-sm font-semibold hover:bg-blue-600 disabled:opacity-50 transition-colors">
+                  <button type="submit" disabled={isChatLoading} className="bg-blue-500/85 backdrop-blur-lg border border-white/20 text-white px-4 py-2 rounded-lg text-sm font-semibold hover:bg-blue-600 disabled:opacity-50 transition-colors">
                     Send
                   </button>
                 </form>
@@ -280,18 +287,18 @@ function App() {
               <div className="flex flex-col h-full p-6 overflow-y-auto">
                 <p className="text-gray-600 text-sm mb-2 font-medium">Paste the Job Description here:</p>
                 <textarea 
-                  className="w-full h-32 bg-white border border-gray-300 rounded-lg p-3 text-sm resize-none focus:ring-2 focus:ring-blue-500 outline-none shadow-inner" 
+                  className="w-full h-32 bg-white/55 backdrop-blur-lg border border-white/60 rounded-lg p-3 text-sm resize-none focus:ring-2 focus:ring-blue-500 outline-none shadow-inner" 
                   placeholder="e.g. We are looking for a Python developer with React experience..."
                   value={jdInput}
                   onChange={(e) => setJdInput(e.target.value)}
                 ></textarea>
                 
-                <button onClick={handleEvaluateJd} disabled={isJdLoading || !jdInput.trim()} className="mt-4 bg-blue-600 text-white font-bold py-2.5 rounded-lg hover:bg-blue-700 disabled:opacity-50 transition-all shadow-md">
+                <button onClick={handleEvaluateJd} disabled={isJdLoading || !jdInput.trim()} className="mt-4 bg-blue-600/85 backdrop-blur-lg border border-white/25 text-white font-bold py-2.5 rounded-lg hover:bg-blue-700 disabled:opacity-50 transition-all shadow-md">
                   {isJdLoading ? 'Analyzing Fit...' : 'Evaluate Match'}
                 </button>
 
                 {jdResult && (
-                  <div className="mt-6 bg-white p-4 rounded-xl border border-gray-200 shadow-sm">
+                  <div className="mt-6 bg-white/55 backdrop-blur-xl p-4 rounded-xl border border-white/70 shadow-sm">
                     <div className="flex items-center justify-between mb-4">
                       <h3 className="font-bold text-gray-800">Match Score</h3>
                       <div className={`text-xl font-black ${jdResult.match_percentage >= 70 ? 'text-green-500' : jdResult.match_percentage >= 40 ? 'text-yellow-500' : 'text-red-500'}`}>
@@ -317,7 +324,7 @@ function App() {
                       </div>
                     </div>
 
-                    <div className="bg-gray-50 p-3 rounded-lg text-sm text-gray-700 italic border-l-4 border-blue-500">
+                    <div className="bg-white/40 backdrop-blur-lg p-3 rounded-lg text-sm text-gray-700 italic border-l-4 border-blue-500">
                       "{jdResult.evaluation_summary}"
                     </div>
                   </div>
@@ -331,11 +338,11 @@ function App() {
       {/* THE DOCK */}
       {!isAiOpen && (
         <div className="w-full flex justify-center pb-4 z-50 transition-all duration-300">
-          <div className="backdrop-blur-xl bg-white/30 rounded-2xl px-4 py-2 flex gap-4 shadow-2xl border border-white/20">
-            <div className="w-12 h-12 bg-white/80 rounded-xl flex items-center justify-center cursor-pointer hover:-translate-y-2 transition-transform text-2xl shadow-sm" title="Projects">📁</div>
-            <div className="w-12 h-12 bg-white/80 rounded-xl flex items-center justify-center cursor-pointer hover:-translate-y-2 transition-transform text-2xl shadow-sm" title="Browser">🌐</div>
+          <div className="backdrop-blur-3xl bg-white/20 rounded-2xl px-4 py-2 flex gap-4 shadow-[0_16px_42px_rgba(15,23,42,0.3)] border border-white/45">
+            <button type="button" onClick={() => setSelectedProject(projectsData["ResearchLab"])} className="w-12 h-12 bg-white/55 backdrop-blur-xl border border-white/60 rounded-xl flex items-center justify-center cursor-pointer hover:-translate-y-2 transition-transform text-2xl shadow-sm" title="Projects">📁</button>
+            <div className="w-12 h-12 bg-white/55 backdrop-blur-xl border border-white/60 rounded-xl flex items-center justify-center cursor-pointer hover:-translate-y-2 transition-transform text-2xl shadow-sm" title="Browser">🌐</div>
             <div 
-              className="h-12 bg-blue-500 rounded-xl flex items-center justify-center cursor-pointer hover:-translate-y-2 transition-transform text-white font-bold px-4 shadow-lg border border-blue-400" 
+              className="h-12 bg-blue-500/85 backdrop-blur-xl rounded-xl flex items-center justify-center cursor-pointer hover:-translate-y-2 transition-transform text-white font-bold px-4 shadow-lg border border-blue-400" 
               title="Ask AI"
               onClick={() => setIsAiOpen(true)}
             >
